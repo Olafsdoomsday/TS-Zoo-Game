@@ -1,0 +1,535 @@
+body {
+    background-color: #000;
+    color: #fff;
+
+    font-family: 'Rubik', sans-serif;
+    text-transform: uppercase;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    user-select: none;
+}
+
+main {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+
+    aspect-ratio: 1 1;
+    filter: invert(1);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+#screen-transition {
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 30;
+
+    background-color: black;
+
+    transform: translateY(100%);
+    animation: fadeInAnimation 1.75s ease-in;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* ----------------------- NAV ----------------------- */
+
+#nav {
+    position: absolute;
+    top: 0%;
+
+    width: 100vw;
+    height: 9vh;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    box-sizing: border-box;
+
+    background-color: rgb(20, 20, 20);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2%;
+}
+
+#currencies, #actions, #cost-info {
+    height: 70%;
+    display: flex;
+}
+#currencies {
+    width: 50%;
+    justify-content: space-between;
+    gap: 5%;
+}
+.currency {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3%;
+    box-sizing: border-box;
+    border-radius: 10px 24px 10px 24px;
+    border: 2px solid white;
+    color: #FFF;
+    width: 100%;
+}
+#coin-info {
+    background-color: #ffaa00;
+}
+#meat-info {
+    background-color: red;
+}
+#grass-info {
+    background-color: green;
+}
+.currency img {
+    width: 20%;
+}
+
+#actions {
+    width: 25%;
+    justify-content: flex-end;
+    align-items: center;
+
+    opacity: 1;
+    transition: opacity 0.2s linear;
+}
+#actions.enabled {
+    opacity: 0;
+}
+.action-holder {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+#breed, #sell, #feed {
+    width: 100%;
+    background-color: #222;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid white;
+    transition: transform 0.5s ease;
+}
+#breed {
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+}
+#sell {
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
+
+#cost-info {
+    width: 25%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.cost-info-holder {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #111;
+    border: 2px solid white;
+    border-radius: 24px;
+}
+#breed-cost-info, #egg-cost-info, #shop-button {
+    width: 100%;
+    text-align: center;
+    transition: transform 0.5s ease;
+}
+#shop-button {
+    cursor: pointer;
+}
+#shop-button:hover {
+    animation: shakeSlight 1s ease 1;
+}
+#shop-button img {
+    width: 30%;
+}
+
+#search {
+    position: absolute;
+    right: 2.5vw;
+
+    width: 22.75vw;
+    height: 70%;
+
+    opacity: 0;
+    transition: opacity 0.2s linear;
+    pointer-events: none;
+}
+#search-input {
+    float: right;
+    outline: 0;
+    appearance: none;
+
+    width: 100%;
+    height: 100%;
+    padding: 7%;
+
+    font-size: 200%;
+
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    border-radius: 24px;
+
+    box-sizing: border-box;
+}
+#search.enabled {
+    opacity: 1 !important;
+    pointer-events: all !important;
+}
+
+/* ----------------------- SIDE NAV ----------------------- */
+
+.side-nav {
+    position: absolute;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 3%;
+
+    width: 5vw;
+    height: 90vh;
+}
+.side-nav div {
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+.side-nav img {
+    width: 70%;
+}
+
+#side-right-nav {
+    right: 0;
+}
+
+/* ----------------------- SHOP ----------------------- */
+
+#shop {
+    position: absolute;
+    width: 95vw;
+    height: 90vh;
+    z-index: 1;
+
+    box-sizing: border-box;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+
+    top: 10vh;
+    left: 0;
+
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+
+    padding: 1%;
+
+    background-color: #222;
+}
+#shop.enabled {
+    transform: translateX(0%) !important;
+}
+
+.shop-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-left: 1%;
+    padding-right: 1%;
+    height: 8vh;
+    cursor: pointer;
+
+    border: 2px solid white;
+    background-color: rgb(25, 25, 25);
+    transition: background-color 1s ease;
+}
+.shop-item:hover {
+    background-color: rgb(55, 55, 55);
+}
+.shop-item.enabled {
+    background-color: rgb(55, 55, 55);
+    cursor: auto !important;
+}
+
+.shop-item-name{
+    width: 40%;
+    margin: 0;
+}
+.shop-item-descr {
+    width: 40%;
+}
+.shop-item-cost {
+    width: 20%;
+    text-align: center;
+}
+
+/* ----------------------- NOTIFICATION ----------------------- */
+
+#notification {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 0%);
+    z-index: 2;
+
+    width: 50vw;
+    height: 50vh;
+    box-sizing: border-box;
+    padding: 3%;
+
+    background-color: black;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid white;
+    border-radius: 24px;
+
+    opacity: 0;
+    transition: transform 1s ease, opacity 1s ease;
+
+    pointer-events: none;
+}
+#notification.enabled {
+    opacity: 1 !important;
+    transform: translate(-50%, -50%);
+}
+#notification p {
+    text-align: center;
+}
+
+/* ----------------------- CARDS ----------------------- */
+
+.clickable {
+    cursor: pointer;
+
+    transition: transform 0.1s ease;
+}
+.clickable:active {
+    transform: scale(1.05);
+}
+
+.selected {
+    transform: scale(1.05);
+}
+
+.favourite{
+    transform: rotate(-3deg);
+}
+
+.scroll-x {
+    overflow-x: scroll;
+}
+
+#card-holder {
+    background-color: #222;
+    box-sizing: border-box;
+    width: 90vw;
+    height: 90vh;
+
+    position: absolute;
+    bottom: 0%;
+
+    overflow-y: scroll;
+
+    margin-top: 5vh;
+    margin-left: 5vw;
+    padding: 1%;
+
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    flex-wrap: wrap;
+    gap: 1.25%;
+}
+
+
+.card-placeholder {
+    border: 2px dotted rgb(0, 0, 0);
+}
+.card {
+    min-width: 220px;
+    flex: 1 0;
+    max-width: 19%;
+    height: 340px;
+    box-sizing: border-box;
+    border-radius: 12px;
+
+    padding: 1%;
+
+    background-color: rgb(0, 0, 0);
+    border: 8px solid;
+
+    transition: transform 0.5s ease;
+}
+.card.sick h1{
+    color: rgb(200, 255, 200);
+}
+
+#purchase-egg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid rgb(0, 0, 0);
+
+    font-size: 700%;
+
+    padding: none;
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease-out;
+}
+#purchase-egg > h1 {
+    margin: 0;
+    padding: 0;
+    height: 72%;
+
+    font-family: monospace;
+
+    transition: color 0.5s ease;
+}
+
+.egg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    animation: shakeAll 2s alternate-reverse infinite linear;
+}
+
+.egg > h2 {
+    flex: 3;
+    display: grid;
+    align-items: center;
+    text-align: center;
+}
+
+.shake {
+    animation: shakeSlight 1s alternate-reverse infinite linear;
+}
+
+@keyframes shakeAll {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+@keyframes shakeSlight {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(-1deg); }
+    20% { transform: rotate(1deg); }
+    30% { transform: rotate(0deg); }
+    40% { transform: rotate(-1deg); }
+    50% { transform: rotate(1deg); }
+    60% { transform: rotate(0deg); }
+    70% { transform: rotate(-1deg); }
+    80% { transform: rotate(1deg); }
+    90% { transform: rotate(0deg); }
+    100% { transform:  rotate(-1deg); }
+}
+
+.shimmer {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.1);
+    background: -webkit-gradient(linear, left top, right top, from(var(--start)), to(var(--start)), color-stop(0.5, var(--end)));
+    background: -moz-gradient(linear, left top, right top, from(var(--start)), to(var(--start)), color-stop(0.5, var(--end)));
+    background: gradient(linear, left top, right top, from(var(--start)), to(var(--start)), color-stop(0.5, var(--end)));
+    -webkit-background-size: 125px 100%;
+    -moz-background-size: 125px 100%;
+    background-size: 125px 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-animation-name: shimmer;
+    -moz-animation-name: shimmer;
+    animation-name: shimmer;
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-color: silver;
+}
+
+@keyframes shimmer {
+    0% {
+            background-position: top left;
+    }
+    100% {
+            background-position: top right;
+    }
+}
+
+.carnivore {
+    color: red;
+}
+.herbivore {
+    color: green;
+}
+.grey {
+    color: #555;
+}
+.light-green {
+    color: #bcfdb3;
+}

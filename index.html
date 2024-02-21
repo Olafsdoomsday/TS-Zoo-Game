@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoo</title>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="imgs/zoo.png">
+</head>
+<body>
+    <main id="main">
+        <div id="nav">
+            <div id="currencies">
+                <div id="coin-info" class="currency">
+                    <img src="imgs/coin.png" alt="coin">
+                    <p id="coins" class="number">100</p>
+                </div>
+                <div id="meat-info" class="currency">
+                    <img src="imgs/meat.png" alt="meat">
+                    <p id="meat" class="number">100</p>
+                </div>
+                <div id="grass-info" class="currency">
+                    <img src="imgs/flower.png" alt="grass">
+                    <p id="grass" class="number">100</p>
+                </div>
+            </div>
+    
+            <div id="cost-info">
+                <div class="cost-info-holder">
+                    <div id="breed-cost-info">
+                        <p id="breed-info">BREED: 30</p>
+                    </div>
+                    <div id="shop-button">
+                        <img src="imgs/shop.png" alt="shop">
+                    </div>
+                    <div id="egg-cost-info">
+                        <p id="egg-info">EGG: 20</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="actions">
+                <div class="action-holder">
+                    <div id="breed" class="action">
+                        <p>BREED</p>
+                    </div>
+                    <div id="feed" class="action">
+                        <p>FEED</p>
+                    </div>
+                    <div id="sell" class="action">
+                        <p>SELL</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="search">
+                <input type="text" placeholder="SEARCH" id="search-input" autocomplete="off" spellcheck="false">
+            </div>
+
+        </div>
+
+        <div id="side-right-nav" class="side-nav">
+            <div id="bin">
+                <img src="imgs/bin.png" alt="bin" id="bin-img">
+            </div>
+            <div id="restart">
+                <img src="imgs/restart.png" alt="restart" id="restart-img">
+            </div>
+            <div id="achievements">
+                <img src="imgs/achievements.png" alt="achievements" id="achievements-img">
+            </div>
+            <div id="search-button">
+                <img src="imgs/search.png" alt="search-img">
+            </div>
+            <div id="pause">
+                <img src="imgs/pause.png" alt="pause/play" id="pause-img">
+            </div>
+        </div>
+    
+        <ul id="card-holder">
+            <li class="card clickable" id="purchase-egg">
+                <h1>+</h1>
+            </li>
+        </ul>
+    
+        <div id="shop">
+            <h1>UPGRADES</h1>
+            <ul>
+                <div class="shop-item">
+                    <h3 class="shop-item-name">ANIMAL COUNT +1</h3>
+                    <p class="shop-item-descr">Gives you room for another animal.</p>
+                    <p class="shop-item-cost">50</p>
+                </div>
+                <div class="shop-item">
+                    <h3 class="shop-item-name">MEAT GAIN +1</h3>
+                    <p class="shop-item-descr">You now produce more meat every 10 seconds.</p>
+                    <p class="shop-item-cost">50</p>
+                </div>
+                <div class="shop-item">
+                    <h3 class="shop-item-name">GRASS GAIN +1</h3>
+                    <p class="shop-item-descr">You now produce more grass every 10 seconds.</p>
+                    <p class="shop-item-cost">50</p>
+                </div>
+                <div class="shop-item">
+                    <h3 class="shop-item-name">TIER 2 ANIMALS</h3>
+                    <p class="shop-item-descr">Unlocks tier 2 animals from eggs.</p>
+                    <p class="shop-item-cost">50</p>
+                </div>
+            </ul>
+        </div>
+    </main>
+
+    <div id="notification">
+        <h1 id="notification-head">Testing</h1>
+        <p id="notification-details">Details.</p>
+    </div>
+
+    <div id="screen-transition"></div>
+</body>
+</html>
